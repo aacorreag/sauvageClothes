@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto | Sauvage Clothes</title>
+    
+    <!-- Tailwind CSS para estilos rápidos y modernos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        sauvage: {
+                            black: '#0a0a0a',
+                            gray: '#1f1f1f',
+                            accent: '#d4af37', // Un toque dorado sutil
+                            white: '#f5f5f5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logo_sauvage.ico" type="image/x-icon">
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer" onclick="window.location.href='index.html'">
+                    <img src="img/Logo.png" alt="Sauvage" class="h-10 md:h-14 w-auto">
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html#collection" class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Colección</a>
+                    <a href="about.html" class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Manifiesto</a>
+                    <a href="index.html#contact" class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Contacto</a>
+                </div>
+
+                <!-- Icons -->
+                <div class="flex items-center space-x-6">
+                    <button class="hover:text-sauvage-accent transition-colors">
+                        <i class="ph ph-magnifying-glass text-2xl"></i>
+                    </button>
+                    <button class="relative hover:text-sauvage-accent transition-colors" onclick="toggleCart()">
+                        <i class="ph ph-shopping-bag text-2xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-sauvage-accent text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <main class="pt-24 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Product Image -->
+            <div class="aspect-[3/4] bg-gray-800 overflow-hidden">
+                <img id="product-image" src="" alt="" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Product Info -->
+            <div class="flex flex-col justify-center">
+                <div class="mb-6">
+                    <p id="product-category" class="text-xs text-gray-500 uppercase tracking-wide mb-2"></p>
+                    <h1 id="product-name" class="font-serif text-4xl md:text-5xl font-bold text-white mb-4"></h1>
+                    <p id="product-price" class="font-serif text-3xl text-gray-300 mb-6"></p>
+                    <p id="product-description" class="text-gray-400 leading-relaxed mb-8"></p>
+                </div>
+
+                <!-- Size Selection -->
+                <div class="mb-6">
+                    <h3 class="text-white font-bold mb-3">Talla</h3>
+                    <div id="size-options" class="flex space-x-3">
+                        <!-- Sizes will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Quantity Selection -->
+                <div class="mb-8">
+                    <h3 class="text-white font-bold mb-3">Cantidad</h3>
+                    <div class="flex items-center border border-white/20 w-fit">
+                        <button id="decrease-qty" class="px-3 py-2 text-gray-400 hover:text-white">-</button>
+                        <span id="quantity" class="px-4 text-white">1</span>
+                        <button id="increase-qty" class="px-3 py-2 text-gray-400 hover:text-white">+</button>
+                    </div>
+                </div>
+
+                <!-- Add to Cart Button -->
+                <button id="add-to-cart-btn" class="w-full bg-white text-black py-4 font-bold uppercase tracking-widest hover:bg-sauvage-accent transition-colors duration-300">
+                    Añadir al Carrito
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar (Modal) -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden transition-opacity duration-300 opacity-0" onclick="toggleCart()"></div>
+    
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-sauvage-gray z-[70] shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col border-l border-white/10">
+        <!-- Cart Header -->
+        <div class="p-6 border-b border-white/10 flex justify-between items-center">
+            <h2 class="font-serif text-2xl">Tu Carrito</h2>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-white transition-colors">
+                <i class="ph ph-x text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items">
+            <!-- JS will populate empty state or items -->
+            <div class="text-center text-gray-500 mt-20 flex flex-col items-center">
+                <i class="ph ph-shopping-bag-open text-6xl mb-4 opacity-50"></i>
+                <p>Tu carrito está vacío.</p>
+                <button onclick="toggleCart()" class="mt-4 text-sauvage-accent underline hover:text-white">Explorar colección</button>
+            </div>
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="p-6 border-t border-white/10 bg-black/20">
+            <div class="flex justify-between items-center mb-4 text-lg">
+                <span class="text-gray-400">Subtotal</span>
+                <span class="font-bold font-serif" id="cart-total">$0.00</span>
+            </div>
+            <p class="text-xs text-gray-500 mb-6">Impuestos y gastos de envío calculados en el pago.</p>
+            <button onclick="checkout()" class="w-full bg-white text-black py-4 uppercase tracking-widest font-bold hover:bg-sauvage-accent transition-colors duration-300">
+                Proceder al Pago
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded shadow-lg z-[80] transition-all duration-300 translate-y-20 opacity-0 flex items-center space-x-3">
+        <i class="ph-fill ph-check-circle text-green-600 text-xl"></i>
+        <span class="font-medium text-sm">Producto añadido al carrito</span>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>
