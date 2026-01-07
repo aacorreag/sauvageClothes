@@ -204,7 +204,21 @@ function showToast(message) {
 
 function checkout() {
 	if (cart.length === 0) return;
-	alert('¡Gracias por tu compra en SAUVAGE! Esto es una demo.');
+
+	const phoneNumber = "573168684737"; 
+	
+	let message = "Hola, me gustaría completar mi pedido:\n\n";
+	
+	cart.forEach(item => {
+		message += `- ${item.name} (${item.size || 'Unica'}) x ${item.quantity}: $${(item.price * item.quantity).toLocaleString('es-CO')}\n`;
+	});
+	
+	const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+	message += `\nTotal: $${total.toLocaleString('es-CO')}`;
+	
+	const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+	window.open(url, '_blank');
+	
 	cart = [];
 	updateCartUI();
 	toggleCart();
