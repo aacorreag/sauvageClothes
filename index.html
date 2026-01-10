@@ -1,201 +1,213 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sauvage Clothes | Moda Urbana</title>
-    
-    <!-- Tailwind CSS para estilos rápidos y modernos -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Iconos (Phosphor Icons) -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Cinzel', 'serif'],
-                    },
-                    colors: {
-                        sauvage: {
-                            black: '#0a0a0a',
-                            gray: '#1f1f1f',
-                            accent: '#d4af37', // Un toque dorado sutil
-                            white: '#f5f5f5'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="img/logo_sauvage.ico" type="image/x-icon">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sauvage Clothes</title>
+	<!-- Tailwind CSS -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+		rel="stylesheet">
+	<!-- Iconos -->
+	<script src="https://unpkg.com/@phosphor-icons/web"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						sans: ['Inter', 'sans-serif'],
+						serif: ['Cinzel', 'serif'],
+					},
+					colors: {
+						sauvage: {
+							black: '#0a0a0a',
+							gray: '#1f1f1f',
+							accent: '#d4af37',
+							white: '#f5f5f5'
+						}
+					}
+				}
+			}
+		}
+	</script>
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="icon" href="img/logo_sauvage.ico" type="image/x-icon">
 </head>
+
 <body class="antialiased overflow-x-hidden">
+	<!-- Navbar -->
+	<nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-20">
+				<!-- Logo -->
+				<div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
+					<img src="img/Logo.webp" alt="Sauvage" class="h-12 md:h-16 w-auto">
+				</div>
 
-    <!-- Navbar -->
-    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img src="img/Logo.webp" alt="Sauvage" class="h-12 md:h-16 w-auto">
-                </div>
+				<!-- Desktop Menu -->
+				<div class="hidden md:flex space-x-8 items-center">
+					<a href="#collection"
+						class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Colección</a>
+					<a href="about.html"
+						class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Manifiesto</a>
+					<a href="#contact"
+						class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Contacto</a>
+				</div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#collection" class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Colección</a>
-                    <a href="about.html" class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Manifiesto</a>
-                    <a href="#contact" class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Contacto</a>
-                </div>
+				<!-- Icons -->
+				<div class="flex items-center space-x-6">
+					<div class="relative flex items-center">
+						<button onclick="toggleSearch()" class="hover:text-sauvage-accent transition-colors">
+							<i class="ph ph-magnifying-glass text-2xl"></i>
+						</button>
+						<input id="search-input" type="text" placeholder="Buscar productos..."
+							class="absolute top-1/2 transform -translate-y-1/2 bg-transparent border border-white/20 text-white placeholder-gray-400 px-3 py-1 rounded focus:outline-none focus:border-sauvage-accent transition-all duration-300 opacity-0 pointer-events-none lg:w-[200px] max-lg:fixed max-lg:top-20 max-lg:left-0 max-lg:w-full max-lg:h-16 max-lg:bg-sauvage-gray max-lg:border-b max-lg:border-white/10 max-lg:px-6 max-lg:z-40"
+							oninput="renderProducts(this.value)">
+					</div>
+					<button class="relative hover:text-sauvage-accent transition-colors" onclick="toggleCart()">
+						<i class="ph ph-shopping-bag text-2xl"></i>
+						<span id="cart-count"
+							class="absolute -top-2 -right-2 bg-sauvage-accent text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Hero Section -->
+	<header class="relative h-screen flex items-center justify-center overflow-hidden">
+		<!-- Background Image with Overlay -->
+		<div class="absolute inset-0 z-0">
+			<img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2000&auto=format&fit=crop"
+				alt="Hero Background" class="w-full h-full object-cover opacity-60">
+			<div class="absolute inset-0 bg-gradient-to-t from-sauvage-black via-transparent to-transparent"></div>
+		</div>
 
-                <!-- Icons -->
-                <div class="flex items-center space-x-6">
-                    <div class="relative flex items-center">
-                        <button onclick="toggleSearch()" class="hover:text-sauvage-accent transition-colors">
-                            <i class="ph ph-magnifying-glass text-2xl"></i>
-                        </button>
-                        <input id="search-input" type="text" placeholder="Buscar productos..." class="absolute top-1/2 transform -translate-y-1/2 bg-transparent border border-white/20 text-white placeholder-gray-400 px-3 py-1 rounded focus:outline-none focus:border-sauvage-accent transition-all duration-300 opacity-0 pointer-events-none lg:w-[200px] max-lg:fixed max-lg:top-20 max-lg:left-0 max-lg:w-full max-lg:h-16 max-lg:bg-sauvage-gray max-lg:border-b max-lg:border-white/10 max-lg:px-6 max-lg:z-40" oninput="renderProducts(this.value)">
-                    </div>
-                    <button class="relative hover:text-sauvage-accent transition-colors" onclick="toggleCart()">
-                        <i class="ph ph-shopping-bag text-2xl"></i>
-                        <span id="cart-count" class="absolute -top-2 -right-2 bg-sauvage-accent text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+		<div class="relative z-10 text-center px-4 fade-in" style="animation-delay: 0.2s;">
+			<p class="text-sauvage-accent uppercase tracking-[0.3em] mb-4 text-sm md:text-base">Nueva Colección 2026</p>
+			<h2 class="font-serif text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-6 tracking-tight">
+				COMODIDAD<br>SALVAJE</h2>
+			<p class="max-w-xl mx-auto text-gray-300 mb-10 font-light">Redefiniendo el autocuidado con prendas cómodas y
+				funcionales. Diseñado para quienes priorizan su bienestar y libertad.</p>
+			<a href="#collection"
+				class="inline-block border border-white px-8 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+				Ver Productos
+			</a>
+		</div>
+	</header>
 
-    <!-- Hero Section -->
-    <header class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Overlay -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2000&auto=format&fit=crop" 
-                 alt="Hero Background" 
-                 class="w-full h-full object-cover opacity-60">
-            <div class="absolute inset-0 bg-gradient-to-t from-sauvage-black via-transparent to-transparent"></div>
-        </div>
+	<!-- Products Section -->
+	<main id="collection" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex justify-between items-end mb-12">
+			<div>
+				<h3 class="font-serif text-3xl text-white mb-2">Últimos Drops</h3>
+				<div class="h-1 w-20 bg-sauvage-accent"></div>
+			</div>
+			<div class="hidden md:block">
+				<span id="product-count" class="text-gray-500 text-sm">Mostrando 6 productos exclusivos</span>
+			</div>
+		</div>
 
-        <div class="relative z-10 text-center px-4 fade-in" style="animation-delay: 0.2s;">
-            <p class="text-sauvage-accent uppercase tracking-[0.3em] mb-4 text-sm md:text-base">Nueva Colección 2026</p>
-            <h2 class="font-serif text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-6 tracking-tight">COMODIDAD<br>SALVAJE</h2>
-            <p class="max-w-xl mx-auto text-gray-300 mb-10 font-light">Redefiniendo el autocuidado con prendas cómodas y funcionales. Diseñado para quienes priorizan su bienestar y libertad.</p>
-            <a href="#collection" class="inline-block border border-white px-8 py-3 text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
-                Ver Productos
-            </a>
-        </div>
-    </header>
+		<!-- Product Grid -->
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8" id="product-grid">
+			<!-- Products will be injected here via JS -->
+		</div>
+	</main>
 
-    <!-- Products Section -->
-    <main id="collection" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-end mb-12">
-            <div>
-                <h3 class="font-serif text-3xl text-white mb-2">Últimos Drops</h3>
-                <div class="h-1 w-20 bg-sauvage-accent"></div>
-            </div>
-            <div class="hidden md:block">
-                <span id="product-count" class="text-gray-500 text-sm">Mostrando 6 productos exclusivos</span>
-            </div>
-        </div>
+	<!-- About / Marquee Section -->
+	<section class="py-16 border-y border-white/10 bg-sauvage-gray overflow-hidden">
+		<div class="whitespace-nowrap flex space-x-12 animate-marquee">
+			<!-- Repeated text for marquee effect logic serves no functional purpose in static HTML without complex JS animation, so strictly static stylish banner -->
+			<h2 class="text-4xl md:text-6xl font-serif text-white/20 font-bold uppercase select-none">Sauvage Clothes &bull;
+				Be Wild &bull; Est. 2025 &bull; Luxury Streetwear &bull;</h2>
+			<h2 class="text-4xl md:text-6xl font-serif text-white/20 font-bold uppercase select-none hidden md:block">Sauvage
+				Clothes &bull; Be Wild &bull; Est. 2025 &bull; Luxury Streetwear &bull;</h2>
+		</div>
+	</section>
 
-        <!-- Product Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8" id="product-grid">
-            <!-- Products will be injected here via JS -->
-        </div>
-    </main>
+	<!-- Footer -->
+	<footer class="bg-black pt-16 pb-8 border-t border-white/10" id="contact">
+		<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+			<div class="col-span-1 md:col-span-2">
+				<img src="img/Logo.webp" alt="Sauvage" class="h-24 mb-6">
+				<p class="text-gray-400 max-w-sm font-light">Ropa cómoda y elegante para tu bienestar diario. Desde el descanso
+					perfecto hasta el ejercicio empoderador.</p>
+			</div>
+			<div>
+				<h5 class="text-white uppercase tracking-widest text-sm mb-6 font-bold">Ayuda</h5>
+				<ul class="space-y-4 text-gray-400 text-sm">
+					<li><a href="#" class="hover:text-white transition-colors">Envíos y Devoluciones</a></li>
+					<li><a href="#" class="hover:text-white transition-colors">Guía de Tallas</a></li>
+					<li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+					<li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+				</ul>
+			</div>
+			<div>
+				<h5 class="text-white uppercase tracking-widest text-sm mb-6 font-bold">Síguenos</h5>
+				<div class="flex space-x-4 text-2xl text-gray-400">
+					<a href="#" class="hover:text-sauvage-accent transition-colors"><i class="ph ph-instagram-logo"></i></a>
+					<a href="#" class="hover:text-sauvage-accent transition-colors"><i class="ph ph-twitter-logo"></i></a>
+					<a href="#" class="hover:text-sauvage-accent transition-colors"><i class="ph ph-tiktok-logo"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="text-center text-gray-600 text-xs border-t border-white/5 pt-8">
+			&copy; 2024 Sauvage Clothes. Todos los derechos reservados.
+		</div>
+	</footer>
 
-    <!-- About / Marquee Section -->
-    <section class="py-16 border-y border-white/10 bg-sauvage-gray overflow-hidden">
-        <div class="whitespace-nowrap flex space-x-12 animate-marquee">
-            <!-- Repeated text for marquee effect logic serves no functional purpose in static HTML without complex JS animation, so strictly static stylish banner -->
-            <h2 class="text-4xl md:text-6xl font-serif text-white/20 font-bold uppercase select-none">Sauvage Clothes &bull; Be Wild &bull; Est. 2024 &bull; Luxury Streetwear &bull;</h2>
-            <h2 class="text-4xl md:text-6xl font-serif text-white/20 font-bold uppercase select-none hidden md:block">Sauvage Clothes &bull; Be Wild &bull; Est. 2024 &bull; Luxury Streetwear &bull;</h2>
-        </div>
-    </section>
+	<!-- Shopping Cart Sidebar (Modal) -->
+	<div id="cart-overlay"
+		class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden transition-opacity duration-300 opacity-0"
+		onclick="toggleCart()"></div>
 
-    <!-- Footer -->
-    <footer class="bg-black pt-16 pb-8 border-t border-white/10" id="contact">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            <div class="col-span-1 md:col-span-2">
-                <img src="img/Logo.webp" alt="Sauvage" class="h-24 mb-6">
-                <p class="text-gray-400 max-w-sm font-light">Ropa cómoda y elegante para tu bienestar diario. Desde el descanso perfecto hasta el ejercicio empoderador.</p>
-            </div>
-            <div>
-                <h5 class="text-white uppercase tracking-widest text-sm mb-6 font-bold">Ayuda</h5>
-                <ul class="space-y-4 text-gray-400 text-sm">
-                    <li><a href="#" class="hover:text-white transition-colors">Envíos y Devoluciones</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Guía de Tallas</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5 class="text-white uppercase tracking-widest text-sm mb-6 font-bold">Síguenos</h5>
-                <div class="flex space-x-4 text-2xl text-gray-400">
-                    <a href="#" class="hover:text-sauvage-accent transition-colors"><i class="ph ph-instagram-logo"></i></a>
-                    <a href="#" class="hover:text-sauvage-accent transition-colors"><i class="ph ph-twitter-logo"></i></a>
-                    <a href="#" class="hover:text-sauvage-accent transition-colors"><i class="ph ph-tiktok-logo"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="text-center text-gray-600 text-xs border-t border-white/5 pt-8">
-            &copy; 2024 Sauvage Clothes. Todos los derechos reservados.
-        </div>
-    </footer>
+	<div id="cart-sidebar"
+		class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-sauvage-gray z-[70] shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col border-l border-white/10">
+		<!-- Cart Header -->
+		<div class="p-6 border-b border-white/10 flex justify-between items-center">
+			<h2 class="font-serif text-2xl">Tu Carrito</h2>
+			<button onclick="toggleCart()" class="text-gray-400 hover:text-white transition-colors">
+				<i class="ph ph-x text-2xl"></i>
+			</button>
+		</div>
 
-    <!-- Shopping Cart Sidebar (Modal) -->
-    <div id="cart-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden transition-opacity duration-300 opacity-0" onclick="toggleCart()"></div>
-    
-    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-sauvage-gray z-[70] shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col border-l border-white/10">
-        <!-- Cart Header -->
-        <div class="p-6 border-b border-white/10 flex justify-between items-center">
-            <h2 class="font-serif text-2xl">Tu Carrito</h2>
-            <button onclick="toggleCart()" class="text-gray-400 hover:text-white transition-colors">
-                <i class="ph ph-x text-2xl"></i>
-            </button>
-        </div>
+		<!-- Cart Items -->
+		<div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items">
+			<!-- JS will populate empty state or items -->
+			<div class="text-center text-gray-500 mt-20 flex flex-col items-center">
+				<i class="ph ph-shopping-bag-open text-6xl mb-4 opacity-50"></i>
+				<p>Tu carrito está vacío.</p>
+				<button onclick="toggleCart()" class="mt-4 text-sauvage-accent underline hover:text-white">Explorar
+					colección</button>
+			</div>
+		</div>
 
-        <!-- Cart Items -->
-        <div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items">
-            <!-- JS will populate empty state or items -->
-            <div class="text-center text-gray-500 mt-20 flex flex-col items-center">
-                <i class="ph ph-shopping-bag-open text-6xl mb-4 opacity-50"></i>
-                <p>Tu carrito está vacío.</p>
-                <button onclick="toggleCart()" class="mt-4 text-sauvage-accent underline hover:text-white">Explorar colección</button>
-            </div>
-        </div>
+		<!-- Cart Footer -->
+		<div class="p-6 border-t border-white/10 bg-black/20">
+			<div class="flex justify-between items-center mb-4 text-lg">
+				<span class="text-gray-400">Subtotal</span>
+				<span class="font-bold font-serif" id="cart-total">$0.00</span>
+			</div>
+			<p class="text-xs text-gray-500 mb-6">Impuestos y gastos de envío calculados en el pago.</p>
+			<button onclick="checkout()"
+				class="w-full bg-white text-black py-4 uppercase tracking-widest font-bold hover:bg-sauvage-accent transition-colors duration-300">
+				Proceder al Pago
+			</button>
+		</div>
+	</div>
 
-        <!-- Cart Footer -->
-        <div class="p-6 border-t border-white/10 bg-black/20">
-            <div class="flex justify-between items-center mb-4 text-lg">
-                <span class="text-gray-400">Subtotal</span>
-                <span class="font-bold font-serif" id="cart-total">$0.00</span>
-            </div>
-            <p class="text-xs text-gray-500 mb-6">Impuestos y gastos de envío calculados en el pago.</p>
-            <button onclick="checkout()" class="w-full bg-white text-black py-4 uppercase tracking-widest font-bold hover:bg-sauvage-accent transition-colors duration-300">
-                Proceder al Pago
-            </button>
-        </div>
-    </div>
+	<!-- Notification Toast -->
+	<div id="toast"
+		class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded shadow-lg z-[80] transition-all duration-300 translate-y-20 opacity-0 flex items-center space-x-3">
+		<i class="ph-fill ph-check-circle text-green-600 text-xl"></i>
+		<span class="font-medium text-sm">Producto añadido al carrito</span>
+	</div>
 
-    <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded shadow-lg z-[80] transition-all duration-300 translate-y-20 opacity-0 flex items-center space-x-3">
-        <i class="ph-fill ph-check-circle text-green-600 text-xl"></i>
-        <span class="font-medium text-sm">Producto añadido al carrito</span>
-    </div>
-
-    <script src="js/data.js"></script>
-    <script src="js/script.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/script.js"></script>
 </body>
-</html>
-</body>
+
 </html>
