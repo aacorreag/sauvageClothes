@@ -5,6 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sauvage Clothes</title>
+	<meta name="description"
+		content="Descubre Sauvage Clothes, ropa cómoda y elegante para tu bienestar. Lujo y streetwear fusionados para el autocuidado.">
 	<!-- Tailwind CSS -->
 	<script src="https://cdn.tailwindcss.com"></script>
 	<!-- Google Fonts -->
@@ -61,14 +63,15 @@
 				<!-- Iconos -->
 				<div class="flex items-center space-x-6">
 					<div class="relative flex items-center">
-						<button onclick="toggleSearch()" class="hover:text-sauvage-accent transition-colors">
+						<button onclick="toggleSearch()" class="hover:text-sauvage-accent transition-colors" aria-label="Buscar">
 							<i class="ph ph-magnifying-glass text-2xl"></i>
 						</button>
-						<input id="search-input" type="text" placeholder="Buscar productos..."
+						<input id="search-input" type="text" placeholder="Buscar productos..." aria-label="Buscar productos"
 							class="absolute top-1/2 transform -translate-y-1/2 bg-transparent border border-white/20 text-white placeholder-gray-400 px-3 py-1 rounded focus:outline-none focus:border-sauvage-accent transition-all duration-300 opacity-0 pointer-events-none lg:w-[200px] max-lg:fixed max-lg:top-20 max-lg:left-0 max-lg:w-full max-lg:h-16 max-lg:bg-sauvage-gray max-lg:border-b max-lg:border-white/10 max-lg:px-6 max-lg:z-40"
 							oninput="renderProducts(this.value)">
 					</div>
-					<button class="relative hover:text-sauvage-accent transition-colors" onclick="toggleCart()">
+					<button class="relative hover:text-sauvage-accent transition-colors" onclick="toggleCart()"
+						aria-label="Ver carrito">
 						<i class="ph ph-shopping-bag text-2xl"></i>
 						<span id="cart-count"
 							class="absolute -top-2 -right-2 bg-sauvage-accent text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
@@ -149,9 +152,12 @@
 			<div>
 				<h5 class="text-white uppercase tracking-widest text-sm mb-6 font-bold">Síguenos</h5>
 				<div class="flex space-x-4 text-2xl text-gray-400">
-					<a href="#" class="hover:text-sauvage-accent transition-colors"><i class="ph ph-instagram-logo"></i></a>
-					<a href="#" class="hover:text-sauvage-accent transition-colors"><i class="ph ph-twitter-logo"></i></a>
-					<a href="#" class="hover:text-sauvage-accent transition-colors"><i class="ph ph-tiktok-logo"></i></a>
+					<a href="#" class="hover:text-sauvage-accent transition-colors" aria-label="Instagram"><i
+							class="ph ph-instagram-logo"></i></a>
+					<a href="#" class="hover:text-sauvage-accent transition-colors" aria-label="Twitter"><i
+							class="ph ph-twitter-logo"></i></a>
+					<a href="#" class="hover:text-sauvage-accent transition-colors" aria-label="TikTok"><i
+							class="ph ph-tiktok-logo"></i></a>
 				</div>
 			</div>
 		</div>
@@ -170,7 +176,8 @@
 		<!-- Cart Header -->
 		<div class="p-6 border-b border-white/10 flex justify-between items-center">
 			<h2 class="font-serif text-2xl">Tu Carrito</h2>
-			<button onclick="toggleCart()" class="text-gray-400 hover:text-white transition-colors">
+			<button onclick="toggleCart()" class="text-gray-400 hover:text-white transition-colors"
+				aria-label="Cerrar carrito">
 				<i class="ph ph-x text-2xl"></i>
 			</button>
 		</div>

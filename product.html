@@ -5,6 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Producto | Sauvage Clothes</title>
+	<meta name="description" content="Detalles del producto Sauvage Clothes. Comodidad y estilo en cada prenda.">
 	<!-- Tailwind CSS para estilos rápidos y modernos -->
 	<script src="https://cdn.tailwindcss.com"></script>
 	<!-- Google Fonts -->
@@ -60,10 +61,11 @@
 
 				<!-- Iconos -->
 				<div class="flex items-center space-x-6">
-					<button class="hover:text-sauvage-accent transition-colors">
+					<button class="hover:text-sauvage-accent transition-colors" aria-label="Buscar">
 						<i class="ph ph-magnifying-glass text-2xl"></i>
 					</button>
-					<button class="relative hover:text-sauvage-accent transition-colors" onclick="toggleCart()">
+					<button class="relative hover:text-sauvage-accent transition-colors" onclick="toggleCart()"
+						aria-label="Ver carrito">
 						<i class="ph ph-shopping-bag text-2xl"></i>
 						<span id="cart-count"
 							class="absolute -top-2 -right-2 bg-sauvage-accent text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
@@ -102,11 +104,11 @@
 				<div class="mb-8">
 					<h3 class="text-white font-bold mb-3">Cantidad</h3>
 					<div class="flex items-center border border-white/20 w-fit">
-						<button id="decrease-qty" class="px-3 py-2 text-gray-400 hover:text-white">
+						<button id="decrease-qty" class="px-3 py-2 text-gray-400 hover:text-white" aria-label="Disminuir cantidad">
 							-
 						</button>
 						<span id="quantity" class="px-4 text-white">1</span>
-						<button id="increase-qty" class="px-3 py-2 text-gray-400 hover:text-white">
+						<button id="increase-qty" class="px-3 py-2 text-gray-400 hover:text-white" aria-label="Aumentar cantidad">
 							+
 						</button>
 					</div>
@@ -131,7 +133,8 @@
 		<!-- Cart Header -->
 		<div class="p-6 border-b border-white/10 flex justify-between items-center">
 			<h2 class="font-serif text-2xl">Tu Carrito</h2>
-			<button onclick="toggleCart()" class="text-gray-400 hover:text-white transition-colors">
+			<button onclick="toggleCart()" class="text-gray-400 hover:text-white transition-colors"
+				aria-label="Cerrar carrito">
 				<i class="ph ph-x text-2xl"></i>
 			</button>
 		</div>
