@@ -65,7 +65,7 @@ const products = [
 	{
 		id: 8,
 		name: "Conjunto Gym Negro",
-		price: 95000,
+		price: 85000,
 		image: "img/8.webp",
 		category: "Gym",
 		sizes: ["S", "M", "L"],
@@ -83,7 +83,7 @@ const products = [
 	{
 		id: 10,
 		name: "Conjunto Gym de mangas Negro",
-		price: 95000,
+		price: 85000,
 		image: "img/10.webp",
 		category: "Gym",
 		sizes: ["S", "M", "L"],
@@ -119,7 +119,7 @@ const products = [
 	{
 		id: 14,
 		name: "Conjunto Gym Cafe",
-		price: 95000,
+		price: 85000,
 		image: "img/14.webp",
 		category: "Gym",
 		sizes: ["S", "M", "L"],
