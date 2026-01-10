@@ -45,7 +45,7 @@
 			<div class="flex justify-between items-center h-20">
 				<!-- Logo -->
 				<div class="flex-shrink-0 cursor-pointer" onclick="window.location.href = 'index.html'">
-					<img src="img/Logo.webp" alt="Sauvage" class="h-10 md:h-14 w-auto" />
+					<img src="img/Logo.webp" alt="Sauvage" class="h-10 md:h-14 w-auto" loading="lazy" />
 				</div>
 
 				<!-- Desktop Menu -->
@@ -58,7 +58,7 @@
 						class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Contacto</a>
 				</div>
 
-				<!-- Icons -->
+				<!-- Iconos -->
 				<div class="flex items-center space-x-6">
 					<button class="hover:text-sauvage-accent transition-colors">
 						<i class="ph ph-magnifying-glass text-2xl"></i>
@@ -73,15 +73,15 @@
 		</div>
 	</nav>
 
-	<!-- Product Detail Section -->
+	<!-- Sección de Detalle del Producto -->
 	<main class="pt-24 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-			<!-- Product Image -->
+			<!-- Imagen del Producto -->
 			<div class="aspect-[3/4] bg-gray-800 overflow-hidden">
 				<img id="product-image" src="" alt="" class="w-full h-full object-cover" />
 			</div>
 
-			<!-- Product Info -->
+			<!-- Información del Producto -->
 			<div class="flex flex-col justify-center">
 				<div class="mb-6">
 					<p id="product-category" class="text-xs text-gray-500 uppercase tracking-wide mb-2"></p>
@@ -90,15 +90,15 @@
 					<p id="product-description" class="text-gray-400 leading-relaxed mb-8"></p>
 				</div>
 
-				<!-- Size Selection -->
+				<!-- Selección de Talla -->
 				<div class="mb-6">
 					<h3 class="text-white font-bold mb-3">Talla</h3>
 					<div id="size-options" class="flex space-x-3">
-						<!-- Sizes will be injected here -->
+						<!-- Las tallas se inyectarán aquí -->
 					</div>
 				</div>
 
-				<!-- Quantity Selection -->
+				<!-- Selección de Cantidad -->
 				<div class="mb-8">
 					<h3 class="text-white font-bold mb-3">Cantidad</h3>
 					<div class="flex items-center border border-white/20 w-fit">
@@ -112,7 +112,7 @@
 					</div>
 				</div>
 
-				<!-- Add to Cart Button -->
+				<!-- Botón Añadir al Carrito -->
 				<button id="add-to-cart-btn"
 					class="w-full bg-white text-black py-4 font-bold uppercase tracking-widest hover:bg-sauvage-accent transition-colors duration-300">
 					Añadir al Carrito
@@ -121,7 +121,7 @@
 		</div>
 	</main>
 
-	<!-- Shopping Cart Sidebar (Modal) -->
+	<!-- Barra Lateral del Carrito (Modal) -->
 	<div id="cart-overlay"
 		class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden transition-opacity duration-300 opacity-0"
 		onclick="toggleCart()"></div>
@@ -138,7 +138,7 @@
 
 		<!-- Cart Items -->
 		<div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items">
-			<!-- JS will populate empty state or items -->
+			<!-- JS poblará estado vacío o ítems -->
 			<div class="text-center text-gray-500 mt-20 flex flex-col items-center">
 				<i class="ph ph-shopping-bag-open text-6xl mb-4 opacity-50"></i>
 				<p>Tu carrito está vacío.</p>
@@ -164,7 +164,7 @@
 		</div>
 	</div>
 
-	<!-- Notification Toast -->
+	<!-- Notificación Toast -->
 	<div id="toast"
 		class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded shadow-lg z-[80] transition-all duration-300 translate-y-20 opacity-0 flex items-center space-x-3">
 		<i class="ph-fill ph-check-circle text-green-600 text-xl"></i>

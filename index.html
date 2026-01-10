@@ -45,7 +45,7 @@
 			<div class="flex justify-between items-center h-20">
 				<!-- Logo -->
 				<div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
-					<img src="img/Logo.webp" alt="Sauvage" class="h-12 md:h-16 w-auto">
+					<img src="img/Logo.webp" alt="Sauvage" class="h-12 md:h-16 w-auto" loading="lazy">
 				</div>
 
 				<!-- Desktop Menu -->
@@ -58,7 +58,7 @@
 						class="text-sm uppercase tracking-widest hover:text-sauvage-accent transition-colors">Contacto</a>
 				</div>
 
-				<!-- Icons -->
+				<!-- Iconos -->
 				<div class="flex items-center space-x-6">
 					<div class="relative flex items-center">
 						<button onclick="toggleSearch()" class="hover:text-sauvage-accent transition-colors">
@@ -79,7 +79,7 @@
 	</nav>
 	<!-- Hero Section -->
 	<header class="relative h-screen flex items-center justify-center overflow-hidden">
-		<!-- Background Image with Overlay -->
+		<!-- Imagen de Fondo con Superposición -->
 		<div class="absolute inset-0 z-0">
 			<img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2000&auto=format&fit=crop"
 				alt="Hero Background" class="w-full h-full object-cover opacity-60">
@@ -99,7 +99,7 @@
 		</div>
 	</header>
 
-	<!-- Products Section -->
+	<!-- Sección de Productos -->
 	<main id="collection" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex justify-between items-end mb-12">
 			<div>
@@ -113,17 +113,18 @@
 
 		<!-- Product Grid -->
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8" id="product-grid">
-			<!-- Products will be injected here via JS -->
+			<!-- Los productos se inyectarán aquí vía JS -->
 		</div>
 	</main>
 
-	<!-- About / Marquee Section -->
+	<!-- Sección Acerca de / Marquesina -->
 	<section class="py-16 border-y border-white/10 bg-sauvage-gray overflow-hidden">
-		<div class="whitespace-nowrap flex space-x-12 animate-marquee">
-			<!-- Repeated text for marquee effect logic serves no functional purpose in static HTML without complex JS animation, so strictly static stylish banner -->
-			<h2 class="text-4xl md:text-6xl font-serif text-white/20 font-bold uppercase select-none">Sauvage Clothes &bull;
+		<div class="whitespace-nowrap flex animate-marquee">
+			<!-- Texto repetido para el efecto marquesina sirve como banner estético -->
+			<h2 class="text-4xl md:text-6xl font-serif text-white/20 font-bold uppercase select-none mr-12">Sauvage Clothes
+				&bull;
 				Be Wild &bull; Est. 2025 &bull; Luxury Streetwear &bull;</h2>
-			<h2 class="text-4xl md:text-6xl font-serif text-white/20 font-bold uppercase select-none hidden md:block">Sauvage
+			<h2 class="text-4xl md:text-6xl font-serif text-white/20 font-bold uppercase select-none mr-12">Sauvage
 				Clothes &bull; Be Wild &bull; Est. 2025 &bull; Luxury Streetwear &bull;</h2>
 		</div>
 	</section>
@@ -132,7 +133,7 @@
 	<footer class="bg-black pt-16 pb-8 border-t border-white/10" id="contact">
 		<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
 			<div class="col-span-1 md:col-span-2">
-				<img src="img/Logo.webp" alt="Sauvage" class="h-24 mb-6">
+				<img src="img/Logo.webp" alt="Sauvage" class="h-24 mb-6" loading="lazy">
 				<p class="text-gray-400 max-w-sm font-light">Ropa cómoda y elegante para tu bienestar diario. Desde el descanso
 					perfecto hasta el ejercicio empoderador.</p>
 			</div>
@@ -159,7 +160,7 @@
 		</div>
 	</footer>
 
-	<!-- Shopping Cart Sidebar (Modal) -->
+	<!-- Barra Lateral del Carrito (Modal) -->
 	<div id="cart-overlay"
 		class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden transition-opacity duration-300 opacity-0"
 		onclick="toggleCart()"></div>
@@ -176,7 +177,7 @@
 
 		<!-- Cart Items -->
 		<div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items">
-			<!-- JS will populate empty state or items -->
+			<!-- JS poblará estado vacío o ítems -->
 			<div class="text-center text-gray-500 mt-20 flex flex-col items-center">
 				<i class="ph ph-shopping-bag-open text-6xl mb-4 opacity-50"></i>
 				<p>Tu carrito está vacío.</p>
@@ -199,7 +200,7 @@
 		</div>
 	</div>
 
-	<!-- Notification Toast -->
+	<!-- Notificación Toast -->
 	<div id="toast"
 		class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded shadow-lg z-[80] transition-all duration-300 translate-y-20 opacity-0 flex items-center space-x-3">
 		<i class="ph-fill ph-check-circle text-green-600 text-xl"></i>

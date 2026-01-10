@@ -1,9 +1,9 @@
-// --- DATA ---
-// Products loaded from data.js
+// --- DATOS ---
+// Productos cargados desde data.js
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// --- DOM ELEMENTS ---
+// --- ELEMENTOS DEL DOM ---
 const productGrid = document.getElementById('product-grid');
 const cartSidebar = document.getElementById('cart-sidebar');
 const cartOverlay = document.getElementById('cart-overlay');
@@ -12,7 +12,7 @@ const cartCountBadge = document.getElementById('cart-count');
 const cartTotalEl = document.getElementById('cart-total');
 const toast = document.getElementById('toast');
 
-// --- INITIALIZATION ---
+// --- INICIALIZACIÓN ---
 document.addEventListener('DOMContentLoaded', () => {
 	if (document.getElementById('product-grid')) {
 		renderProducts();
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	updateCartUI();
 });
 
-// --- FUNCTIONS ---
+// --- FUNCIONES ---
 
 let searchVisible = false;
 
@@ -29,7 +29,7 @@ function toggleSearch() {
 	const input = document.getElementById('search-input');
 	if (input) {
 		if (window.innerWidth <= 1023) {
-			// Mobile/Tablet: slide from top as overlay
+			// Móvil/Tablet: deslizar desde arriba como superposición
 			if (searchVisible) {
 				input.style.opacity = '1';
 				input.style.transform = 'translateY(0)';
@@ -43,7 +43,7 @@ function toggleSearch() {
 				renderProducts();
 			}
 		} else {
-			// Desktop: slide from left
+			// Escritorio: deslizar desde la izquierda
 			if (searchVisible) {
 				input.style.opacity = '1';
 				input.style.transform = 'translateY(-50%) translateX(0)';
@@ -60,7 +60,7 @@ function toggleSearch() {
 	}
 }
 
-// Close search on click outside
+// Cerrar búsqueda al hacer clic fuera
 document.addEventListener('click', (e) => {
 	const input = document.getElementById('search-input');
 	const button = document.querySelector('button[onclick="toggleSearch()"]');
@@ -78,11 +78,11 @@ function renderProducts(filter = '') {
 	productGrid.innerHTML = filteredProducts.map(product => `
         <div class="group product-card" onclick="window.location.href='product.html?id=${product.id}'">
             <div class="relative overflow-hidden bg-gray-800 aspect-[3/4] mb-4 cursor-pointer">
-                <img src="${product.image}" alt="${product.name}" class="product-image w-full h-full object-cover transition-transform duration-700 ease-out">
+                <img src="${product.image}" alt="${product.name}" class="product-image w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
                 
                 <!-- Overlay Add Button -->
-                <button onclick="addToCart(${product.id})" class="add-btn absolute bottom-0 left-0 right-0 bg-white text-black py-4 font-bold uppercase tracking-widest text-sm opacity-0 translate-y-full transition-all duration-300 hover:bg-sauvage-accent group-hover:opacity-100 group-hover:translate-y-0">
-                    Añadir al Carrito - $${product.price.toLocaleString('es-CO')}
+                <button onclick="window.location.href='product.html?id=${product.id}'; event.stopPropagation();" class="add-btn absolute bottom-0 left-0 right-0 bg-white text-black py-4 font-bold uppercase tracking-widest text-sm opacity-0 translate-y-full transition-all duration-300 hover:bg-sauvage-accent group-hover:opacity-100 group-hover:translate-y-0">
+                    Ver Detalles - $${product.price.toLocaleString('es-CO')}
                 </button>
             </div>
             <div class="flex justify-between items-start">
@@ -95,7 +95,7 @@ function renderProducts(filter = '') {
         </div>
     `).join('');
 
-	// Update product count
+	// Actualizar contador de productos
 	document.getElementById('product-count').textContent = `Mostrando ${filteredProducts.length} productos exclusivos`;
 }
 
@@ -135,16 +135,16 @@ function updateQuantity(productId, change, size) {
 }
 
 function updateCartUI() {
-	// Update Count Badge
+	// Actualizar Insignia de Conteo
 	const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 	cartCountBadge.innerText = totalItems;
 	cartCountBadge.style.opacity = totalItems > 0 ? '1' : '0';
 
-	// Update Total
+	// Actualizar Total
 	const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 	cartTotalEl.innerText = `$${total.toLocaleString('es-CO')}`;
 
-	// Render Items
+	// Renderizar Ítems
 	if (cart.length === 0) {
 		cartItemsContainer.innerHTML = `
             <div class="text-center text-gray-500 mt-20 flex flex-col items-center">
@@ -157,7 +157,7 @@ function updateCartUI() {
 		cartItemsContainer.innerHTML = cart.map(item => `
             <div class="flex gap-4">
                 <div class="h-24 w-20 bg-gray-800 flex-shrink-0">
-                    <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                    <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <div class="flex-1 flex flex-col justify-between">
                     <div>
@@ -166,11 +166,11 @@ function updateCartUI() {
                     </div>
                     <div class="flex justify-between items-center">
                         <div class="flex items-center border border-white/20">
-                        <button onclick="updateQuantity(${item.id}, -1, '${item.size}')" class="px-2 py-1 text-gray-400 hover:text-white">-</button>
+                        <button onclick="updateQuantity(${item.id}, -1, ${item.size ? `'${item.size}'` : null})" class="px-2 py-1 text-gray-400 hover:text-white">-</button>
                         <span class="px-2 text-sm text-white">${item.quantity}</span>
-                        <button onclick="updateQuantity(${item.id}, 1, '${item.size}')" class="px-2 py-1 text-gray-400 hover:text-white">+</button>
+                        <button onclick="updateQuantity(${item.id}, 1, ${item.size ? `'${item.size}'` : null})" class="px-2 py-1 text-gray-400 hover:text-white">+</button>
                         </div>
-                        <button onclick="removeFromCart(${item.id}, '${item.size}')" class="text-xs text-red-400 hover:text-red-300 underline">Eliminar</button>
+                        <button onclick="removeFromCart(${item.id}, ${item.size ? `'${item.size}'` : null})" class="text-xs text-red-400 hover:text-red-300 underline">Eliminar</button>
                     </div>
                 </div>
             </div>
@@ -179,21 +179,21 @@ function updateCartUI() {
 	localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Toggle Sidebar Logic
+// Lógica para alternar barra lateral
 function toggleCart() {
 	const isClosed = cartSidebar.classList.contains('translate-x-full');
 
 	if (isClosed) {
-		// Open
+		// Abrir
 		cartSidebar.classList.remove('translate-x-full');
 		cartOverlay.classList.remove('hidden');
-		// Small delay to allow display:block to apply before opacity transition
+		// Pequeño retraso para permitir que display:block se aplique antes de la transición de opacidad
 		setTimeout(() => {
 			cartOverlay.classList.remove('opacity-0');
 		}, 10);
-		document.body.style.overflow = 'hidden'; // Prevent background scrolling
+		document.body.style.overflow = 'hidden'; // Prevenir desplazamiento del fondo
 	} else {
-		// Close
+		// Cerrar
 		cartSidebar.classList.add('translate-x-full');
 		cartOverlay.classList.add('opacity-0');
 		setTimeout(() => {
@@ -224,30 +224,30 @@ function checkout() {
 	if (cart.length === 0) return;
 
 	const phoneNumber = "573168684737"; // Placeholder
-	
+
 	let message = "Hola, me gustaría completar mi pedido:\n\n";
-	
+
 	cart.forEach(item => {
 		message += `- ${item.name} (${item.size || 'Unica'}) x ${item.quantity}: $${(item.price * item.quantity).toLocaleString('es-CO')}\n`;
 	});
-	
+
 	const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 	message += `\nTotal: $${total.toLocaleString('es-CO')}`;
-	
+
 	const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 	window.open(url, '_blank');
-	
-	cart = []; // Optional: Clear cart after redirection? Usually keep it in case they come back. 
-    // Keeping cart clear for now as per previous logic, but strictly maybe better to keep it.
-    // The previous logic cleared it: "cart = []; updateCartUI();". 
-    // Let's keep the clear logic if that's what the "demo" did, but usually for whatsapp checkout you might want to keep it.
-    // Actually, let's CLEAR it to match the previous behavior of "completing" the purchase flow.
-    cart = [];
+
+	cart = []; // Opcional: Limpiar carrito después de la redirección. 
+	// Keeping cart clear for now as per previous logic, but strictly maybe better to keep it.
+	// The previous logic cleared it: "cart = []; updateCartUI();". 
+	// Let's keep the clear logic if that's what the "demo" did, but usually for whatsapp checkout you might want to keep it.
+	// Actually, let's CLEAR it to match the previous behavior of "completing" the purchase flow.
+	cart = [];
 	updateCartUI();
 	toggleCart();
 }
 
-// Navbar scroll effect
+// Efecto de desplazamiento de la barra de navegación
 window.addEventListener('scroll', () => {
 	const nav = document.getElementById('navbar');
 	if (window.scrollY > 50) {

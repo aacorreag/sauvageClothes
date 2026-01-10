@@ -1,4 +1,4 @@
-// Get product ID from URL
+// Obtener ID del producto desde la URL
 const urlParams = new URLSearchParams(window.location.search);
 const productId = parseInt(urlParams.get('id'));
 
@@ -6,7 +6,7 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let selectedSize = null;
 let quantity = 1;
 
-// DOM Elements
+// Elementos del DOM
 const productImage = document.getElementById('product-image');
 const productCategory = document.getElementById('product-category');
 const productName = document.getElementById('product-name');
@@ -18,7 +18,7 @@ const decreaseQtyBtn = document.getElementById('decrease-qty');
 const increaseQtyBtn = document.getElementById('increase-qty');
 const addToCartBtn = document.getElementById('add-to-cart-btn');
 
-// Cart elements (shared with script.js)
+// Elementos del carrito (compartidos con script.js)
 const cartSidebar = document.getElementById('cart-sidebar');
 const cartOverlay = document.getElementById('cart-overlay');
 const cartItemsContainer = document.getElementById('cart-items');
@@ -26,7 +26,7 @@ const cartCountBadge = document.getElementById('cart-count');
 const cartTotalEl = document.getElementById('cart-total');
 const toast = document.getElementById('toast');
 
-// Load product details
+// Cargar detalles del producto
 function loadProduct() {
 	const product = products.find(p => p.id === productId);
 	if (!product) {
@@ -41,14 +41,14 @@ function loadProduct() {
 	productPrice.textContent = `$${product.price.toLocaleString('es-CO')}`;
 	productDescription.textContent = product.description;
 
-	// Render size options
+	// Renderizar opciones de talla
 	sizeOptions.innerHTML = product.sizes.map(size => `
         <button class="size-btn border border-white/20 px-4 py-2 text-white hover:border-sauvage-accent transition-colors" data-size="${size}">
             ${size}
         </button>
     `).join('');
 
-	// Add event listeners to size buttons
+	// Agregar oyentes de eventos a los botones de talla
 	document.querySelectorAll('.size-btn').forEach(btn => {
 		btn.addEventListener('click', () => {
 			document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('border-sauvage-accent', 'bg-sauvage-accent', 'text-black'));
@@ -57,7 +57,7 @@ function loadProduct() {
 		});
 	});
 
-	// If only one size, select it automatically
+	// Si solo hay una talla, seleccionarla automáticamente
 	if (product.sizes.length === 1) {
 		const firstBtn = document.querySelector('.size-btn');
 		firstBtn.classList.add('border-sauvage-accent', 'bg-sauvage-accent', 'text-black');
@@ -65,7 +65,7 @@ function loadProduct() {
 	}
 }
 
-// Quantity controls
+// Controles de cantidad
 decreaseQtyBtn.addEventListener('click', () => {
 	if (quantity > 1) {
 		quantity--;
@@ -78,7 +78,7 @@ increaseQtyBtn.addEventListener('click', () => {
 	quantityEl.textContent = quantity;
 });
 
-// Add to cart
+// Añadir al carrito
 addToCartBtn.addEventListener('click', () => {
 	if (!selectedSize) {
 		alert('Por favor selecciona una talla.');
@@ -87,7 +87,7 @@ addToCartBtn.addEventListener('click', () => {
 	addToCart(productId, quantity, selectedSize);
 });
 
-// Shared functions from script.js (copied for product.html)
+// Funciones compartidas desde script.js (copiadas para product.html)
 function addToCart(productId, quantity = 1, size = null) {
 	const product = products.find(p => p.id === productId);
 	const existingItem = cart.find(item => item.id === productId && item.size === size);
@@ -124,7 +124,7 @@ function updateCartUI() {
 		cartItemsContainer.innerHTML = cart.map(item => `
             <div class="flex gap-4">
                 <div class="h-24 w-20 bg-gray-800 flex-shrink-0">
-                    <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                    <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <div class="flex-1 flex flex-col justify-between">
                     <div>
@@ -224,7 +224,7 @@ function checkout() {
 	toggleCart();
 }
 
-// Initialize
+// Inicializar
 document.addEventListener('DOMContentLoaded', () => {
 	loadProduct();
 	updateCartUI();
