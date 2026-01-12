@@ -88,12 +88,14 @@ document.addEventListener("click", (e) => {
 });
 
 function renderProducts(filter = "") {
-	const filteredProducts = products.filter(
-		(p) =>
-			!filter ||
-			p.name.toLowerCase().includes(filter.toLowerCase()) ||
-			p.category.toLowerCase().includes(filter.toLowerCase()),
-	);
+	const filteredProducts = products
+		.filter((p) => p.status !== 'hidden')
+		.filter(
+			(p) =>
+				!filter ||
+				p.name.toLowerCase().includes(filter.toLowerCase()) ||
+				p.category.toLowerCase().includes(filter.toLowerCase()),
+		);
 	productGrid.innerHTML = filteredProducts
 		.map(
 			(product) => `
@@ -101,9 +103,11 @@ function renderProducts(filter = "") {
             <div class="relative overflow-hidden bg-gray-800 aspect-[3/4] mb-4 cursor-pointer">
                 <img src="${product.image}" alt="${product.name}" class="product-image w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
                 
+                ${product.status === 'sold_out' ? '<div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 text-xs font-bold uppercase">Agotado</div>' : ''}
+                
                 <!-- Overlay Add Button -->
                 <button onclick="window.location.href='product.html?id=${product.id}'; event.stopPropagation();" class="add-btn absolute bottom-0 left-0 right-0 bg-white text-black py-4 font-bold uppercase tracking-widest text-sm opacity-0 translate-y-full transition-all duration-300 hover:bg-sauvage-accent group-hover:opacity-100 group-hover:translate-y-0">
-                    Ver Detalles - $${product.price.toLocaleString("es-CO")}
+                    ${product.status === 'sold_out' ? 'Agotado' : `Ver Detalles - $${product.price.toLocaleString("es-CO")}`}
                 </button>
             </div>
             <div class="flex justify-between items-start">

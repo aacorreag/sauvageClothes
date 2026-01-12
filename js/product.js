@@ -30,7 +30,7 @@ const toast = document.getElementById('toast');
 // Cargar detalles del producto
 function loadProduct() {
 	const product = products.find(p => p.id === productId);
-	if (!product) {
+	if (!product || product.status === 'hidden') {
 		window.location.href = 'index.html';
 		return;
 	}
@@ -63,6 +63,20 @@ function loadProduct() {
 		const firstBtn = document.querySelector('.size-btn');
 		firstBtn.classList.add('border-sauvage-accent', 'bg-sauvage-accent', 'text-black');
 		selectedSize = product.sizes[0];
+	}
+
+	// Manejar estado de Sold Out
+	if (product.status === 'sold_out') {
+		addToCartBtn.disabled = true;
+		addToCartBtn.textContent = 'AGOTADO';
+		addToCartBtn.classList.add('opacity-50', 'cursor-not-allowed');
+		addToCartBtn.classList.remove('hover:bg-sauvage-accent');
+		
+		// Ocultar controles de cantidad
+		const quantityContainer = document.querySelector('#quantity').parentElement;
+		if (quantityContainer) {
+			quantityContainer.style.display = 'none';
+		}
 	}
 }
 

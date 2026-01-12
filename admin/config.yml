@@ -3,6 +3,9 @@ backend:
   repo: aacorreag/sauvageClothes
   branch: main
 
+# Habilitar para desarrollo local (ejecutar: npx decap-server)
+local_backend: true
+
 media_folder: "img"
 public_folder: "img"
 
@@ -17,7 +20,7 @@ collections:
           - label: "Lista de Productos"
             name: "items"
             widget: "list"
-            summary: "{{fields.name}} - ${{fields.price}}"
+            summary: "{{fields.name}} - ${{fields.price}} [{{fields.status}}]"
             fields:
               - {
                   label: "ID Único",
@@ -57,4 +60,12 @@ collections:
                   label: "Descripción Detallada",
                   name: "description",
                   widget: "text",
+                }
+              - {
+                  label: "Estado",
+                  name: "status",
+                  widget: "select",
+                  options: ["available", "sold_out", "hidden"],
+                  default: "available",
+                  hint: "available=Visible y comprable | sold_out=Visible pero agotado | hidden=Oculto en la web",
                 }
