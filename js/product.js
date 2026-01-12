@@ -2,6 +2,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const productId = parseInt(urlParams.get('id'));
 
+let products = [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let selectedSize = null;
 let quantity = 1;
@@ -225,7 +226,14 @@ function checkout() {
 }
 
 // Inicializar
-document.addEventListener('DOMContentLoaded', () => {
-	loadProduct();
-	updateCartUI();
+document.addEventListener('DOMContentLoaded', async () => {
+	try {
+		const response = await fetch('data/products.json');
+		const data = await response.json();
+		products = data.items;
+		loadProduct();
+		updateCartUI();
+	} catch (error) {
+		console.error('Error cargando productos:', error);
+	}
 });

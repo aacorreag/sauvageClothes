@@ -27,16 +27,22 @@ Este proyecto ha sido construido utilizando tecnologías web modernas:
 - **Carrito de Compras**: Funcionalidad de agregar, eliminar y ver productos en un sidebar.
 - **Checkout vía WhatsApp**: Integración para finalizar la compra enviando el pedido directamente a WhatsApp.
 - **Catálogo Dinámico**: Renderizado de productos basado en datos (JavaScript).
+- **CMS**: Sistema de gestión de contenido para la administración de productos y colecciones.
+- **Panel de Administración**: Interfaz gráfica en `/admin` para gestionar el inventario.
 
 ## 📂 Estructura del Proyecto
 
 ```text
 sauvageClothes/
+├── admin/          # Configuración del CMS
+│   ├── index.html  # Entry point del admin panel
+│   └── config.yml  # Configuración de colecciones y backend
 ├── css/            # Estilos personalizados
-├── img/            # Imágenes y assets (Logos, productos)
+├── data/           # Fuente de datos
+│   └── products.json # Base de datos de productos (editada por CMS)
+├── img/            # Imágenes y assets
 ├── js/             # Lógica de la aplicación
-│   ├── data.js     # Base de datos simulada de productos
-│   ├── script.js   # Lógica principal (UI, Carrito, Eventos)
+│   ├── script.js   # Lógica principal y fetch de datos
 │   └── product.js  # Lógica específica de productos
 ├── index.html      # Página principal
 ├── about.html      # Página "Sobre Nosotros" / Manifiesto

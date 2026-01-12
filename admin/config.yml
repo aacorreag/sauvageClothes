@@ -1,0 +1,43 @@
+backend:
+  name: github
+  repo: aacorreag/sauvageClothes
+  branch: main
+
+media_folder: "img"
+public_folder: "img"
+
+collections:
+  - name: "data"
+    label: "Datos"
+    files:
+      - name: "products"
+        label: "Productos"
+        file: "data/products.json"
+        fields:
+          - label: "Productos"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "number", value_type: "int" }
+              - { label: "Nombre", name: "name", widget: "string" }
+              - {
+                  label: "Precio",
+                  name: "price",
+                  widget: "number",
+                  value_type: "int",
+                }
+              - { label: "Imagen", name: "image", widget: "image" }
+              - {
+                  label: "Categoría",
+                  name: "category",
+                  widget: "select",
+                  options: ["Ropa interior", "Pijamas", "Blusas", "Gym"],
+                }
+              - {
+                  label: "Tallas",
+                  name: "sizes",
+                  widget: "select",
+                  multiple: true,
+                  options: ["Unica", "S", "M", "L", "XL"],
+                }
+              - { label: "Descripción", name: "description", widget: "text" }
