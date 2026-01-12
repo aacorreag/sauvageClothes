@@ -109,7 +109,7 @@
         "M"
       ],
       "description": "Pack de dos blusas esenciales. La mejor relación calidad-precio para renovar tus básicos de temporada.",
-      "status": "available"
+      "status": "sold_out"
     },
     {
       "id": 10,
@@ -157,7 +157,7 @@
         "S"
       ],
       "description": "Enterizo deportivo que moldea tu cuerpo completo. Soporte máximo, control de abdomen y diseño elegante en una sola pieza.",
-      "status": "available"
+      "status": "hidden"
     },
     {
       "id": 14,
