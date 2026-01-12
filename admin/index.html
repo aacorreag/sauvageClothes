@@ -10,6 +10,99 @@
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-</body>
+
+  <script>
+    // Registrar estilos personalizados para la UI del CMS
+    CMS.registerPreviewStyle("https://cdn.tailwindcss.com");
+
+    // Crear el componente de vista previa para Productos
+    var ProductPreview = createClass({
+      render: function () {
+        var entry = this.props.entry;
+        var image = entry.getIn(['data', 'image']);
+        var name = entry.getIn(['data', 'name']);
+        var category = entry.getIn(['data', 'category']);
+        var price = entry.getIn(['data', 'price']);
+
+        return h('div', { className: "bg-gray-900 p-8 min-h-screen flex justify-center items-center" },
+          h('div', { className: "group product-card w-[300px]" },
+            h('div', { className: "relative overflow-hidden bg-gray-800 aspect-[3/4] mb-4" },
+              h('img', {
+                src: image ? this.props.getAsset(image).toString() : '',
+                className: "product-image w-full h-full object-cover"
+              })
+            ),
+            h('div', { className: "flex justify-between items-start" },
+              h('div', {},
+                h('p', { className: "text-xs text-gray-500 uppercase tracking-wide mb-1" }, category),
+                h('h3', { className: "font-bold text-lg text-white" }, name)
+              ),
+              h('span', { className: "font-serif text-lg text-gray-300" },
+                price ? "$" + price.toLocaleString('es-CO') : "$0"
+              )
+            )
+          )
+        );
+      }
+    });
+
+    // Registrar la vista previa para la colección "products"
+    // Nota: Decap CMS usa "products" como nombre de archivo, pero la colección se llama "data" en config.yml y el archivo "products".
+    // Sin embargo, para "list widgets" dentro de un "file collection", la preview suele ser del archivo completo.
+    // DADO QUE estamos usando una "File Collection" donde editamos UN archivo JSON con mucos items,
+    // la vista previa por defecto muestra el JSON crudo. 
+    // Para simplificar, vamos a estilizar el panel para que sea "Dark Mode".
+
+    // Inyectar CSS global para el admin panel
+    var customStyles = `
+      body { color: #f5f5f5; }
+      .cms-editor-visual { background-color: #0a0a0a; color: white; }
+      /* Intentar forzar dark mode en la UI básica */
+      div[class*="AppContainer"] { background-color: #0a0a0a !important; }
+    `;
+    var style = document.createElement('style');
+    style.innerHTML = customStyles;
+    document.head.appendChild(style);
+
+    // Ajuste: Como es una lista dentro de un archivo, la preview individual es compleja.
+    // Vamos a registrar la preview para el "File" completo, iterando los items.
+
+    var ProductsPreview = createClass({
+      render: function () {
+        var entry = this.props.entry;
+        var items = entry.getIn(['data', 'items']);
+
+        if (!items) return h('div', {}, "No hay productos");
+
+        return h('div', { className: "bg-black min-h-screen p-8" },
+          h('h1', { className: "text-4xl text-white font-serif mb-8 text-center" }, "Vista Previa de Colección"),
+          h('div', { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" },
+            items.map(function (item, index) {
+              var img = item.get('image');
+              return h('div', { className: "group product-card" },
+                h('div', { className: "relative overflow-hidden bg-gray-800 aspect-[3/4] mb-4" },
+                  h('img', {
+                    src: img ? this.props.getAsset(img).toString() : '',
+                    className: "product-image w-full h-full object-cover"
+                  })
+                ),
+                h('div', { className: "flex justify-between items-start" },
+                  h('div', {},
+                    h('p', { className: "text-xs text-gray-500 uppercase tracking-wide mb-1" }, item.get('category')),
+                    h('h3', { className: "font-bold text-lg text-white" }, item.get('name'))
+                  ),
+                  h('span', { className: "font-serif text-lg text-gray-300" },
+                    "$" + (item.get('price') || 0).toLocaleString('es-CO')
+                  )
+                )
+              );
+            }.bind(this))
+          )
+        );
+      }
+    });
+
+    CMS.registerPreviewTemplate("products", ProductsPreview);
+  </script>
 
 </html>
