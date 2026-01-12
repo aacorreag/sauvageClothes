@@ -183,6 +183,20 @@
       "price": 100000,
       "image": "img/15.jpeg",
       "description": "Enterizo corto de diseño moderno y funcional, confeccionado en tela acanalada de alta elasticidad que se ajusta cómodamente al cuerpo. Cuenta con mangas cortas, cuello alto y cierre frontal en contraste que aporta un estilo deportivo y contemporáneo, además de facilitar su colocación."
+    },
+    {
+      "id": 16,
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "status": "available",
+      "category": "Gym",
+      "price": 60000,
+      "name": "Licra corta de tiro alto",
+      "description": "Licra corta confeccionada en tela acanalada de alta elasticidad, diseñada para brindar un ajuste firme y cómodo que se adapta a la silueta. Su tiro alto ofrece control y soporte en la zona abdominal, estilizando la figura y proporcionando mayor seguridad durante el uso.",
+      "image": "img/16.jpeg"
     }
   ]
 }
