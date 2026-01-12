@@ -15,62 +15,62 @@
     },
     {
       "id": 2,
-      "name": "Pijama 2 piezas",
+      "name": "Conjunto pijama corta estampada",
       "price": 50000,
       "image": "img/2.webp",
       "category": "Pijamas",
       "sizes": [
         "M"
       ],
-      "description": "Set de descanso de dos piezas. Material transpirable y ligero para asegurar tus noches más cómodas y frescas.",
+      "description": "Conjunto de pijama compuesto por blusa de tirantes y short, confeccionado en tela suave y ligera que brinda máxima comodidad y frescura. La blusa presenta delicados tirantes con bolero y un pequeño lazo decorativo al frente, aportando un estilo tierno y femenino. El short cuenta con pretina elástica para un ajuste cómodo y práctico",
       "status": "available"
     },
     {
       "id": 3,
-      "name": "Blusa Pijama",
+      "name": "Camisa de pijama tipo camisero estampada",
       "price": 60000,
       "image": "img/3.webp",
       "category": "Pijamas",
       "sizes": [
         "M"
       ],
-      "description": "Blusa de pijama con diseño holgado y tejido ultra suave. Perfecta para esos domingos de relax en casa.",
+      "description": "Camisa de pijama de manga corta, confeccionada en tela suave y ligera que brinda frescura y comodidad durante el descanso. Presenta diseño tipo camisero con cuello solapa, cierre frontal con botones y ribete en contraste que aporta un acabado elegante. Su estampado delicado de ositos y pequeños detalles le da un toque tierno y femenino.",
       "status": "available"
     },
     {
       "id": 4,
-      "name": "Pijama jirafa",
+      "name": "Pijama corto estampado con tirantes",
       "price": 40000,
       "image": "img/4.webp",
       "category": "Pijamas",
       "sizes": [
         "M"
       ],
-      "description": "Pijama con divertido estampado de jirafas. Un toque de alegría y ternura para tus momentos de descanso.",
+      "description": "Pijama corto de dos piezas confeccionado en tela suave y fresca, ideal para brindar comodidad durante el descanso. La blusa de tirantes presenta un divertido estampado de jirafa con diseño moderno y juvenil, además de un delicado acabado ondulado en el ruedo que aporta un toque femenino. El short a juego cuenta con pretina elástica para un ajuste cómodo y un estampado coordinado que complementa el conjunto. Perfecto para dormir o relajarse en casa con estilo y confort.",
       "status": "available"
     },
     {
       "id": 5,
-      "name": "Blusas",
+      "name": "Top corto acanalado sin mangas",
       "price": 30000,
       "image": "img/5.webp",
       "category": "Blusas",
       "sizes": [
         "S"
       ],
-      "description": "Blusa casual básica, un esencial en tu guardarropa. Combina con todo y tiene un corte moderno y favorecedor.",
+      "description": "Top corto confeccionado en tela acanalada de alta elasticidad que se ajusta cómodamente al cuerpo, brindando soporte ligero y libertad de movimiento. Su diseño sin mangas y cuello redondo ofrece un estilo moderno y minimalista, ideal para combinar con jeans, faldas o prendas deportivas. Disponible en varios colores, es una prenda versátil y esencial para looks casuales o urbanos. Cómodo, práctico y perfecto para el uso diario.",
       "status": "available"
     },
     {
       "id": 6,
-      "name": "Pijama Corazones",
+      "name": "Pijama corto con tirantes y estampado de corazones",
       "price": 50000,
       "image": "img/6.webp",
       "category": "Pijamas",
       "sizes": [
         "S"
       ],
-      "description": "Duerme envuelta en amor con esta pijama estampada de corazones. Tela térmica ideal para noches frías.",
+      "description": "Conjunto de pijama corto de dos piezas confeccionado en tela ligera y suave al tacto, ideal para brindar frescura y comodidad durante el descanso. La blusa de tirantes presenta delicados fruncidos y bolero en el ruedo, aportando un diseño femenino y romántico. El short cuenta con pretina elástica para un ajuste cómodo y detalles de volantes que complementan el estilo. Su estampado de corazones multicolor añade un toque alegre y encantador, perfecto para dormir o relajarse en casa con confort y estilo.",
       "status": "available"
     },
     {
