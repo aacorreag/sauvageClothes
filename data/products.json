@@ -7,7 +7,8 @@
       "image": "img/1.webp",
       "category": "Ropa interior",
       "sizes": [
-        "Unica"
+        "Unica",
+        "M"
       ],
       "description": "Body versátil de ajuste perfecto, ideal para combinar con jeans o faldas. Tela suave que estiliza tu figura sin sacrificar comodidad.",
       "status": "available"
@@ -144,7 +145,7 @@
         "M"
       ],
       "description": "Top deportivo transpirable. Diseño de espalda abierta para mayor ventilación y libertad de movimiento.",
-      "status": "sold_out"
+      "status": "available"
     },
     {
       "id": 13,
@@ -168,7 +169,7 @@
         "M"
       ],
       "description": "Set deportivo premium en tono café. Tela gruesa texturizada que no se marca y ofrece un ajuste de segunda piel.",
-      "status": "hidden"
+      "status": "available"
     }
   ]
 }
