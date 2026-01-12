@@ -144,7 +144,7 @@
         "M"
       ],
       "description": "Top deportivo transpirable. Diseño de espalda abierta para mayor ventilación y libertad de movimiento.",
-      "status": "available"
+      "status": "sold_out"
     },
     {
       "id": 13,
@@ -168,7 +168,7 @@
         "M"
       ],
       "description": "Set deportivo premium en tono café. Tela gruesa texturizada que no se marca y ofrece un ajuste de segunda piel.",
-      "status": "available"
+      "status": "hidden"
     }
   ]
 }
