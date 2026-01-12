@@ -61,11 +61,11 @@ collections:
                   name: "description",
                   widget: "text",
                 }
-              - {
-                  label: "Estado",
-                  name: "status",
-                  widget: "select",
-                  options: ["available", "sold_out", "hidden"],
-                  default: "available",
-                  hint: "available=Visible y comprable | sold_out=Visible pero agotado | hidden=Oculto en la web",
-                }
+              - label: "Estado"
+                name: "status"
+                widget: "select"
+                options:
+                  - { label: "Disponible", value: "available" }
+                  - { label: "Agotado", value: "sold_out" }
+                  - { label: "Oculto", value: "hidden" }
+                hint: "Disponible=Visible y comprable | Agotado=Visible pero agotado | Oculto=Oculto en la web"
