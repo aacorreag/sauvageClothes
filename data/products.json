@@ -170,6 +170,19 @@
       ],
       "description": "Set deportivo premium en tono café. Tela gruesa texturizada que no se marca y ofrece un ajuste de segunda piel.",
       "status": "available"
+    },
+    {
+      "status": "available",
+      "category": "Gym",
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "id": 15,
+      "name": "Enterizo corto con cierre frontal",
+      "price": 100000,
+      "image": "img/15.jpeg",
+      "description": "Enterizo corto de diseño moderno y funcional, confeccionado en tela acanalada de alta elasticidad que se ajusta cómodamente al cuerpo. Cuenta con mangas cortas, cuello alto y cierre frontal en contraste que aporta un estilo deportivo y contemporáneo, además de facilitar su colocación."
     }
   ]
 }
