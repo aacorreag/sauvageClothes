@@ -15,7 +15,7 @@
     },
     {
       "id": 2,
-      "name": "Conjunto pijama corta estampada",
+      "name": "Pijama corto ositos",
       "price": 50000,
       "image": "img/2.webp",
       "category": "Pijamas",
@@ -27,7 +27,7 @@
     },
     {
       "id": 3,
-      "name": "Camisa de pijama tipo camisero estampada",
+      "name": "Camisa pijama camisera",
       "price": 60000,
       "image": "img/3.webp",
       "category": "Pijamas",
@@ -39,7 +39,7 @@
     },
     {
       "id": 4,
-      "name": "Pijama corto estampado con tirantes",
+      "name": "Pijama corto jirafa",
       "price": 40000,
       "image": "img/4.webp",
       "category": "Pijamas",
@@ -51,7 +51,7 @@
     },
     {
       "id": 5,
-      "name": "Top corto acanalado sin mangas",
+      "name": "Top corto acanalado",
       "price": 30000,
       "image": "img/5.webp",
       "category": "Blusas",
@@ -63,7 +63,7 @@
     },
     {
       "id": 6,
-      "name": "Pijama corto con tirantes y estampado de corazones",
+      "name": "Pijama corto corazones",
       "price": 50000,
       "image": "img/6.webp",
       "category": "Pijamas",
@@ -75,7 +75,7 @@
     },
     {
       "id": 7,
-      "name": "Conjunto Gym Gris",
+      "name": "Conjunto Deportivo Corto Gris/Negro",
       "price": 85000,
       "image": "img/7.webp",
       "category": "Gym",
