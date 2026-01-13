@@ -2,6 +2,9 @@ backend:
   name: github
   repo: aacorreag/sauvageClothes
   branch: main
+  site_domain: https://sauvage-clothes.pages.dev
+  base_url: https://sauvage-clothes.pages.dev
+  auth_endpoint: /api/auth
 
 media_folder: "img"
 public_folder: "img"
