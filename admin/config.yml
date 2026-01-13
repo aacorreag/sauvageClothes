@@ -3,9 +3,6 @@ backend:
   repo: aacorreag/sauvageClothes
   branch: main
 
-# Habilitar para desarrollo local (ejecutar: npx decap-server)
-local_backend: true
-
 media_folder: "img"
 public_folder: "img"
 
